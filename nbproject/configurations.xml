@@ -11,10 +11,10 @@
       </logicalFolder>
       <itemPath>system.h</itemPath>
       <itemPath>user.h</itemPath>
-      <itemPath>mcc_generated_files/boost.h</itemPath>
-      <itemPath>mcc_generated_files/fuzz.h</itemPath>
       <itemPath>HEF.h</itemPath>
       <itemPath>state_manager.h</itemPath>
+      <itemPath>switch1.h</itemPath>
+      <itemPath>switch2.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -29,11 +29,11 @@
       <itemPath>main.c</itemPath>
       <itemPath>system.c</itemPath>
       <itemPath>user.c</itemPath>
-      <itemPath>mcc_generated_files/fuzz.c</itemPath>
-      <itemPath>mcc_generated_files/boost.c</itemPath>
       <itemPath>mcc_generated_files/hardware_controls.h</itemPath>
       <itemPath>HEF.c</itemPath>
       <itemPath>state_manager.c</itemPath>
+      <itemPath>switch1.c</itemPath>
+      <itemPath>switch2.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
