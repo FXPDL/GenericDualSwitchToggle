@@ -11,8 +11,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S29 . . ]
 "429
 [v _PORTAbits `VS29 ~T0 @X0 0 e@12 ]
-"35 switch1.h
-[v _setSwitch1State `(v ~T0 @X0 0 ef1`i ]
+"36 switch1.h
+[v _setSwitch1OffStart `(v ~T0 @X0 0 ef ]
+"37
+[v _setSwitch1OffFinish `(v ~T0 @X0 0 ef ]
 "1698 C:\Program Files (x86)\Microchip\xc8\v1.37\include\pic16f1503.h
 [s S98 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S98 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
@@ -2888,12 +2890,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;switch1.h: 33: void initSwitch1(void);
 [; ;switch1.h: 34: void updateSwitch1(void);
 [; ;switch1.h: 35: void setSwitch1State(int);
+[; ;switch1.h: 36: void setSwitch1OffStart(void);
+[; ;switch1.h: 37: void setSwitch1OffFinish(void);
 [; ;system.h: 18: void ConfigureOscillator(void);
 [; ;system.h: 19: void wait_ms(uint16_t);
 [; ;system.h: 20: uint16_t adc_convert(uint8_t);
 [; ;switch2.h: 31: void initSwitch2(void);
 [; ;switch2.h: 32: void updateSwitch2(void);
 [; ;switch2.h: 33: void setSwitch2State(int);
+[; ;switch2.h: 34: void setSwitch2OffStart(void);
+[; ;switch2.h: 35: void setSwitch2OffFinish(void);
 "17 switch2.c
 [v _switch2_state `i ~T0 @X0 1 e ]
 [i _switch2_state
@@ -2997,9 +3003,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;switch2.c: 60: switch2_down = long_press_limit;
 "60
 [e = _switch2_down _long_press_limit ]
-[; ;switch2.c: 61: setSwitch1State(0);
+[; ;switch2.c: 61: setSwitch1OffStart();
 "61
-[e ( _setSwitch1State (1 -> 0 `i ]
+[e ( _setSwitch1OffStart ..  ]
 [; ;switch2.c: 62: switch2_toggle = 0;
 "62
 [e = _switch2_toggle -> 0 `i ]
@@ -3016,141 +3022,198 @@ Version 3.2 HI-TECH Software Intermediate Code
 "68
 }
 [e :U 351 ]
-"69
-}
 [; ;switch2.c: 68: }
-[; ;switch2.c: 69: } else {
+[; ;switch2.c: 69: setSwitch1OffFinish();
+"69
+[e ( _setSwitch1OffFinish ..  ]
+"70
+}
+[; ;switch2.c: 70: } else {
 [e $U 352  ]
 [e :U 350 ]
 {
-[; ;switch2.c: 71: if (switch2_state == 1) {
-"71
+[; ;switch2.c: 72: if (switch2_state == 1) {
+"72
 [e $ ! == _switch2_state -> 1 `i 353  ]
 {
-[; ;switch2.c: 72: if (switch2_up == 1) {
-"72
+[; ;switch2.c: 73: if (switch2_up == 1) {
+"73
 [e $ ! == _switch2_up -> 1 `i 354  ]
 {
-[; ;switch2.c: 73: switch2_toggle = 1;
-"73
-[e = _switch2_toggle -> 1 `i ]
-[; ;switch2.c: 74: switch2_turning_on = 0;
+[; ;switch2.c: 74: switch2_toggle = 1;
 "74
-[e = _switch2_turning_on -> 0 `i ]
+[e = _switch2_toggle -> 1 `i ]
+[; ;switch2.c: 75: switch2_turning_on = 0;
 "75
+[e = _switch2_turning_on -> 0 `i ]
+"76
 }
 [e :U 354 ]
-"77
+"78
 }
-[; ;switch2.c: 75: }
-[; ;switch2.c: 77: } else {
+[; ;switch2.c: 76: }
+[; ;switch2.c: 78: } else {
 [e $U 355  ]
 [e :U 353 ]
 {
-[; ;switch2.c: 79: switch2_turning_on = 1;
-"79
-[e = _switch2_turning_on -> 1 `i ]
-[; ;switch2.c: 80: switch2_toggle = 1;
+[; ;switch2.c: 80: switch2_turning_on = 1;
 "80
+[e = _switch2_turning_on -> 1 `i ]
+[; ;switch2.c: 81: switch2_toggle = 1;
+"81
 [e = _switch2_toggle -> 1 `i ]
-"82
-}
-[e :U 355 ]
 "83
 }
-[e :U 352 ]
-[; ;switch2.c: 82: }
-[; ;switch2.c: 83: }
-[; ;switch2.c: 84: switch2_up = 0;
+[e :U 355 ]
 "84
-[e = _switch2_up -> 0 `i ]
-"85
 }
-[; ;switch2.c: 85: } else if (switch2_pressed >= 25) {
+[e :U 352 ]
+[; ;switch2.c: 83: }
+[; ;switch2.c: 84: }
+[; ;switch2.c: 85: switch2_up = 0;
+"85
+[e = _switch2_up -> 0 `i ]
+"86
+}
+[; ;switch2.c: 86: } else if (switch2_pressed >= 25) {
 [e $U 356  ]
 [e :U 349 ]
 [e $ ! >= _switch2_pressed -> 25 `i 357  ]
 {
-[; ;switch2.c: 86: if (switch2_toggle == 1) {
-"86
+[; ;switch2.c: 87: if (switch2_toggle == 1) {
+"87
 [e $ ! == _switch2_toggle -> 1 `i 358  ]
 {
-[; ;switch2.c: 87: setSwitch2State(switch2_turning_on);
-"87
-[e ( _setSwitch2State (1 _switch2_turning_on ]
+[; ;switch2.c: 88: setSwitch2State(switch2_turning_on);
 "88
+[e ( _setSwitch2State (1 _switch2_turning_on ]
+"89
 }
 [e :U 358 ]
-[; ;switch2.c: 88: }
-[; ;switch2.c: 89: LATCbits.LATC5 = switch2_state;
-"89
-[e = . . _LATCbits 0 5 -> _switch2_state `uc ]
-[; ;switch2.c: 90: switch2_turning_on = 0;
+[; ;switch2.c: 89: }
+[; ;switch2.c: 90: LATCbits.LATC5 = switch2_state;
 "90
-[e = _switch2_turning_on -> 0 `i ]
-[; ;switch2.c: 91: switch2_toggle = 0;
+[e = . . _LATCbits 0 5 -> _switch2_state `uc ]
+[; ;switch2.c: 91: switch2_turning_on = 0;
 "91
-[e = _switch2_toggle -> 0 `i ]
-[; ;switch2.c: 92: switch2_up = 1;
+[e = _switch2_turning_on -> 0 `i ]
+[; ;switch2.c: 92: switch2_toggle = 0;
 "92
-[e = _switch2_up -> 1 `i ]
-[; ;switch2.c: 93: switch2_down = 0;
+[e = _switch2_toggle -> 0 `i ]
+[; ;switch2.c: 93: switch2_up = 1;
 "93
-[e = _switch2_down -> 0 `i ]
-[; ;switch2.c: 94: switch2_pressed = 25;
+[e = _switch2_up -> 1 `i ]
+[; ;switch2.c: 94: switch2_down = 0;
 "94
-[e = _switch2_pressed -> 25 `i ]
+[e = _switch2_down -> 0 `i ]
+[; ;switch2.c: 95: switch2_pressed = 25;
 "95
+[e = _switch2_pressed -> 25 `i ]
+"96
 }
 [e :U 357 ]
-"96
+"97
 [e :U 356 ]
-[; ;switch2.c: 95: }
 [; ;switch2.c: 96: }
+[; ;switch2.c: 97: }
 [e :UE 344 ]
 }
-"98
+"99
 [v _setSwitch2State `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;switch2.c: 98: void setSwitch2State(int f_state) {
+[; ;switch2.c: 99: void setSwitch2State(int f_state) {
 [e :U _setSwitch2State ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;switch2.c: 99: if (switch2_state == f_state) {return;}
-"99
+[; ;switch2.c: 100: if (switch2_state == f_state) {return;}
+"100
 [e $ ! == _switch2_state _f_state 360  ]
 {
 [e $UE 359  ]
 }
 [e :U 360 ]
-[; ;switch2.c: 100: switch2_state = f_state;
-"100
-[e = _switch2_state _f_state ]
-[; ;switch2.c: 101: LATCbits.LATC5 = f_state;
+[; ;switch2.c: 101: switch2_state = f_state;
 "101
-[e = . . _LATCbits 0 5 -> _f_state `uc ]
-[; ;switch2.c: 102: LATCbits.LATC0 = f_state;
+[e = _switch2_state _f_state ]
+[; ;switch2.c: 102: LATCbits.LATC5 = f_state;
 "102
-[e = . . _LATCbits 0 0 -> _f_state `uc ]
-[; ;switch2.c: 103: LATCbits.LATC4 = !f_state;
+[e = . . _LATCbits 0 5 -> _f_state `uc ]
+[; ;switch2.c: 103: LATCbits.LATC0 = f_state;
 "103
+[e = . . _LATCbits 0 0 -> _f_state `uc ]
+[; ;switch2.c: 104: LATCbits.LATC4 = !f_state;
+"104
 [e = . . _LATCbits 0 4 -> -> ! != _f_state -> 0 `i `i `uc ]
-[; ;switch2.c: 105: wait_ms(20);
-"105
+[; ;switch2.c: 106: wait_ms(20);
+"106
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;switch2.c: 107: LATCbits.LATC0 = 0;
-"107
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;switch2.c: 108: LATCbits.LATC4 = 0;
+[; ;switch2.c: 108: LATCbits.LATC0 = 0;
 "108
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;switch2.c: 109: LATCbits.LATC4 = 0;
+"109
 [e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;switch2.c: 110: updateSwitch2State(switch2_state);
-"110
-[e ( _updateSwitch2State (1 _switch2_state ]
-[; ;switch2.c: 111: wait_ms(20);
+[; ;switch2.c: 111: updateSwitch2State(switch2_state);
 "111
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;switch2.c: 112: }
+[e ( _updateSwitch2State (1 _switch2_state ]
+[; ;switch2.c: 112: wait_ms(20);
 "112
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;switch2.c: 113: }
+"113
 [e :UE 359 ]
+}
+"116
+[v _setSwitch2OffStart `(v ~T0 @X0 1 ef ]
+{
+[; ;switch2.c: 116: void setSwitch2OffStart() {
+[e :U _setSwitch2OffStart ]
+[f ]
+[; ;switch2.c: 117: if (switch2_state == 0) {return;}
+"117
+[e $ ! == _switch2_state -> 0 `i 362  ]
+{
+[e $UE 361  ]
+}
+[e :U 362 ]
+[; ;switch2.c: 118: switch2_state = 0;
+"118
+[e = _switch2_state -> 0 `i ]
+[; ;switch2.c: 119: LATCbits.LATC5 = 0;
+"119
+[e = . . _LATCbits 0 5 -> -> 0 `i `uc ]
+[; ;switch2.c: 120: LATCbits.LATC0 = 0;
+"120
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;switch2.c: 121: LATCbits.LATC4 = 1;
+"121
+[e = . . _LATCbits 0 4 -> -> 1 `i `uc ]
+[; ;switch2.c: 122: }
+"122
+[e :UE 361 ]
+}
+"125
+[v _setSwitch2OffFinish `(v ~T0 @X0 1 ef ]
+{
+[; ;switch2.c: 125: void setSwitch2OffFinish() {
+[e :U _setSwitch2OffFinish ]
+[f ]
+[; ;switch2.c: 126: wait_ms(20);
+"126
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;switch2.c: 128: LATCbits.LATC0 = 0;
+"128
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;switch2.c: 129: LATCbits.LATC4 = 0;
+"129
+[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
+[; ;switch2.c: 131: updateSwitch2State(0);
+"131
+[e ( _updateSwitch2State (1 -> 0 `i ]
+[; ;switch2.c: 132: wait_ms(20);
+"132
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;switch2.c: 133: }
+"133
+[e :UE 363 ]
 }

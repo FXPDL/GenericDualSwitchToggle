@@ -3919,6 +3919,8 @@ uint16_t adc_convert(uint8_t);
 void initSwitch1(void);
 void updateSwitch1(void);
 void setSwitch1State(int);
+void setSwitch1OffStart(void);
+void setSwitch1OffFinish(void);
 
 # 18 "system.h"
 void ConfigureOscillator(void);
@@ -3929,6 +3931,8 @@ uint16_t adc_convert(uint8_t);
 void initSwitch2(void);
 void updateSwitch2(void);
 void setSwitch2State(int);
+void setSwitch2OffStart(void);
+void setSwitch2OffFinish(void);
 
 # 17 "switch2.c"
 int switch2_state = -1;
@@ -3961,7 +3965,7 @@ switch2_down++;
 # 59
 if (switch2_down >= long_press_limit) {
 switch2_down = long_press_limit;
-setSwitch1State(0);
+setSwitch1OffStart();
 switch2_toggle = 0;
 
 if (switch2_state == 0) {
@@ -3969,6 +3973,7 @@ if (switch2_state == 0) {
 switch2_turning_on = 1;
 setSwitch2State(1);
 }
+setSwitch1OffFinish();
 } else {
 
 if (switch2_state == 1) {
@@ -4011,5 +4016,25 @@ LATCbits.LATC0 = 0;
 LATCbits.LATC4 = 0;
 
 updateSwitch2State(switch2_state);
+wait_ms(20);
+}
+
+
+void setSwitch2OffStart() {
+if (switch2_state == 0) {return;}
+switch2_state = 0;
+LATCbits.LATC5 = 0;
+LATCbits.LATC0 = 0;
+LATCbits.LATC4 = 1;
+}
+
+
+void setSwitch2OffFinish() {
+wait_ms(20);
+
+LATCbits.LATC0 = 0;
+LATCbits.LATC4 = 0;
+
+updateSwitch2State(0);
 wait_ms(20);
 }

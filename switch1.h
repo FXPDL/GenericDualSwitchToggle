@@ -33,3 +33,5 @@ extern "C" {
 void initSwitch1(void);
 void updateSwitch1(void);
 void setSwitch1State(int);
+void setSwitch1OffStart(void);
+void setSwitch1OffFinish(void);

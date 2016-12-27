@@ -58,7 +58,7 @@ void updateSwitch2(void) {
         //Switch1 was on, so if it is long press then kick in feedback.  If it is short, then turn off the switch1
         if (switch2_down >= long_press_limit) {
             switch2_down = long_press_limit; //try and prevent overflow
-            setSwitch1State(0);
+            setSwitch1OffStart();
             switch2_toggle = 0;
             
             if (switch2_state == 0) {
@@ -66,6 +66,7 @@ void updateSwitch2(void) {
                 switch2_turning_on = 1;
                 setSwitch2State(1);
             }
+            setSwitch1OffFinish();
         } else {
         
             if (switch2_state == 1) {  //Switch was on.
@@ -108,5 +109,25 @@ void setSwitch2State(int f_state) {
     Relay_Switch210 = 0;
 
     updateSwitch2State(switch2_state);  
+    wait_ms(relay_delay);
+}
+
+
+void setSwitch2OffStart() {
+    if (switch2_state == 0) {return;}
+    switch2_state = 0;
+    Switch2_LED = 0;
+    Relay_Switch21 = 0;
+    Relay_Switch210 = 1;
+}
+
+
+void setSwitch2OffFinish() {
+    wait_ms(relay_delay);
+
+    Relay_Switch21 = 0;
+    Relay_Switch210 = 0;
+
+    updateSwitch2State(0);  
     wait_ms(relay_delay);
 }
