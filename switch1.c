@@ -47,27 +47,38 @@ void updateSwitch1(void) {
 
     if (switch1_pressed == 0) {
         switch1_down++;
-        if (switch1_state == 1) {
+        
+        //The switch is down.  
+        //  On a short press:
+        //      toggle the switch
+        //  On a long press:
+        //      turn the switch on (or leave it on if it already was)
+        //      turn the other switch off
+        
+        //Switch1 was on, so if it is long press then kick in feedback.  If it is short, then turn off the switch1
+        if (switch1_down >= long_press_limit) {
+            switch1_down = long_press_limit; //try and prevent overflow
+            setSwitch2State(0);
+            switch1_toggle = 0;
+        }
+        
+        if (switch1_state == 1) {  //Switch was on.
             if (switch1_up == 1) {
                 switch1_toggle = 1;
+                switch1_turning_on = 0;
             }
-            //Switch1 was on, so if it is long press then kick in feedback.  If it is short, then turn off the switch1
-            if (switch1_down >= long_press_limit) {
-                switch1_down = long_press_limit; //try and prevent overflow
-                setSwitch2State(0);
-                switch1_toggle = 0;
-            }
+
         } else {
             //Switch1 was off, so turn it on
             switch1_turning_on = 1;
-            switch1_toggle = 0;
-            setSwitch1State(1);
+            switch1_toggle = 1;
+            //setSwitch1State(1);
         }
 
         switch1_up = 0;
     } else if (switch1_pressed >= debounce_limit) {
         if (switch1_toggle == 1) {
-            setSwitch1State(0);
+            setSwitch1State(switch1_turning_on);
         }
         Switch1_LED = switch1_state;
         switch1_turning_on = 0;

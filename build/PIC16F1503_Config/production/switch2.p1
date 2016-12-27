@@ -2987,150 +2987,150 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;switch2.c: 48: if (switch2_pressed == 0) {
 [e $ ! == _switch2_pressed -> 0 `i 349  ]
 {
-[; ;switch2.c: 56: switch2_down++;
-"56
+[; ;switch2.c: 49: switch2_down++;
+"49
 [e ++ _switch2_down -> 1 `i ]
-[; ;switch2.c: 57: if (switch2_state == 1) {
-"57
-[e $ ! == _switch2_state -> 1 `i 350  ]
-{
-[; ;switch2.c: 58: if (switch2_up == 1) {
-"58
-[e $ ! == _switch2_up -> 1 `i 351  ]
-{
-[; ;switch2.c: 59: switch2_toggle = 1;
+[; ;switch2.c: 59: if (switch2_down >= long_press_limit) {
 "59
-[e = _switch2_toggle -> 1 `i ]
-"60
-}
-[e :U 351 ]
-[; ;switch2.c: 60: }
-[; ;switch2.c: 62: if (switch2_down >= long_press_limit) {
-"62
-[e $ ! >= _switch2_down _long_press_limit 352  ]
+[e $ ! >= _switch2_down _long_press_limit 350  ]
 {
-[; ;switch2.c: 63: switch2_down = long_press_limit;
-"63
+[; ;switch2.c: 60: switch2_down = long_press_limit;
+"60
 [e = _switch2_down _long_press_limit ]
-[; ;switch2.c: 64: setSwitch1State(0);
-"64
+[; ;switch2.c: 61: setSwitch1State(0);
+"61
 [e ( _setSwitch1State (1 -> 0 `i ]
-[; ;switch2.c: 65: switch2_toggle = 0;
-"65
+[; ;switch2.c: 62: switch2_toggle = 0;
+"62
 [e = _switch2_toggle -> 0 `i ]
+"63
+}
+[e :U 350 ]
+[; ;switch2.c: 63: }
+[; ;switch2.c: 65: if (switch2_state == 1) {
+"65
+[e $ ! == _switch2_state -> 1 `i 351  ]
+{
+[; ;switch2.c: 66: if (switch2_up == 1) {
 "66
+[e $ ! == _switch2_up -> 1 `i 352  ]
+{
+[; ;switch2.c: 67: switch2_toggle = 1;
+"67
+[e = _switch2_toggle -> 1 `i ]
+[; ;switch2.c: 68: switch2_turning_on = 0;
+"68
+[e = _switch2_turning_on -> 0 `i ]
+"69
 }
 [e :U 352 ]
-"67
-}
-[; ;switch2.c: 66: }
-[; ;switch2.c: 67: } else {
-[e $U 353  ]
-[e :U 350 ]
-{
-[; ;switch2.c: 69: switch2_turning_on = 1;
-"69
-[e = _switch2_turning_on -> 1 `i ]
-[; ;switch2.c: 70: switch2_toggle = 0;
-"70
-[e = _switch2_toggle -> 0 `i ]
-[; ;switch2.c: 71: setSwitch2State(1);
 "71
-[e ( _setSwitch2State (1 -> 1 `i ]
-"72
+}
+[; ;switch2.c: 69: }
+[; ;switch2.c: 71: } else {
+[e $U 353  ]
+[e :U 351 ]
+{
+[; ;switch2.c: 73: switch2_turning_on = 1;
+"73
+[e = _switch2_turning_on -> 1 `i ]
+[; ;switch2.c: 74: switch2_toggle = 1;
+"74
+[e = _switch2_toggle -> 1 `i ]
+"76
 }
 [e :U 353 ]
-[; ;switch2.c: 72: }
-[; ;switch2.c: 74: switch2_up = 0;
-"74
+[; ;switch2.c: 76: }
+[; ;switch2.c: 78: switch2_up = 0;
+"78
 [e = _switch2_up -> 0 `i ]
-"75
+"79
 }
-[; ;switch2.c: 75: } else if (switch2_pressed >= 25) {
+[; ;switch2.c: 79: } else if (switch2_pressed >= 25) {
 [e $U 354  ]
 [e :U 349 ]
 [e $ ! >= _switch2_pressed -> 25 `i 355  ]
 {
-[; ;switch2.c: 76: if (switch2_toggle == 1) {
-"76
+[; ;switch2.c: 80: if (switch2_toggle == 1) {
+"80
 [e $ ! == _switch2_toggle -> 1 `i 356  ]
 {
-[; ;switch2.c: 77: setSwitch2State(0);
-"77
-[e ( _setSwitch2State (1 -> 0 `i ]
-"78
+[; ;switch2.c: 81: setSwitch2State(switch2_turning_on);
+"81
+[e ( _setSwitch2State (1 _switch2_turning_on ]
+"82
 }
 [e :U 356 ]
-[; ;switch2.c: 78: }
-[; ;switch2.c: 79: LATCbits.LATC5 = switch2_state;
-"79
-[e = . . _LATCbits 0 5 -> _switch2_state `uc ]
-[; ;switch2.c: 80: switch2_turning_on = 0;
-"80
-[e = _switch2_turning_on -> 0 `i ]
-[; ;switch2.c: 81: switch2_toggle = 0;
-"81
-[e = _switch2_toggle -> 0 `i ]
-[; ;switch2.c: 82: switch2_up = 1;
-"82
-[e = _switch2_up -> 1 `i ]
-[; ;switch2.c: 83: switch2_down = 0;
+[; ;switch2.c: 82: }
+[; ;switch2.c: 83: LATCbits.LATC5 = switch2_state;
 "83
-[e = _switch2_down -> 0 `i ]
-[; ;switch2.c: 84: switch2_pressed = 25;
+[e = . . _LATCbits 0 5 -> _switch2_state `uc ]
+[; ;switch2.c: 84: switch2_turning_on = 0;
 "84
-[e = _switch2_pressed -> 25 `i ]
+[e = _switch2_turning_on -> 0 `i ]
+[; ;switch2.c: 85: switch2_toggle = 0;
 "85
+[e = _switch2_toggle -> 0 `i ]
+[; ;switch2.c: 86: switch2_up = 1;
+"86
+[e = _switch2_up -> 1 `i ]
+[; ;switch2.c: 87: switch2_down = 0;
+"87
+[e = _switch2_down -> 0 `i ]
+[; ;switch2.c: 88: switch2_pressed = 25;
+"88
+[e = _switch2_pressed -> 25 `i ]
+"89
 }
 [e :U 355 ]
-"86
+"90
 [e :U 354 ]
-[; ;switch2.c: 85: }
-[; ;switch2.c: 86: }
+[; ;switch2.c: 89: }
+[; ;switch2.c: 90: }
 [e :UE 344 ]
 }
-"88
+"92
 [v _setSwitch2State `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;switch2.c: 88: void setSwitch2State(int f_state) {
+[; ;switch2.c: 92: void setSwitch2State(int f_state) {
 [e :U _setSwitch2State ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;switch2.c: 89: if (switch2_state == f_state) {return;}
-"89
+[; ;switch2.c: 93: if (switch2_state == f_state) {return;}
+"93
 [e $ ! == _switch2_state _f_state 358  ]
 {
 [e $UE 357  ]
 }
 [e :U 358 ]
-[; ;switch2.c: 90: switch2_state = f_state;
-"90
+[; ;switch2.c: 94: switch2_state = f_state;
+"94
 [e = _switch2_state _f_state ]
-[; ;switch2.c: 91: LATCbits.LATC5 = f_state;
-"91
-[e = . . _LATCbits 0 5 -> _f_state `uc ]
-[; ;switch2.c: 92: LATCbits.LATC0 = f_state;
-"92
-[e = . . _LATCbits 0 0 -> _f_state `uc ]
-[; ;switch2.c: 93: LATCbits.LATC4 = !f_state;
-"93
-[e = . . _LATCbits 0 4 -> -> ! != _f_state -> 0 `i `i `uc ]
-[; ;switch2.c: 95: wait_ms(20);
+[; ;switch2.c: 95: LATCbits.LATC5 = f_state;
 "95
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;switch2.c: 97: LATCbits.LATC0 = 0;
+[e = . . _LATCbits 0 5 -> _f_state `uc ]
+[; ;switch2.c: 96: LATCbits.LATC0 = f_state;
+"96
+[e = . . _LATCbits 0 0 -> _f_state `uc ]
+[; ;switch2.c: 97: LATCbits.LATC4 = !f_state;
 "97
-[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
-[; ;switch2.c: 98: LATCbits.LATC4 = 0;
-"98
-[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
-[; ;switch2.c: 100: updateSwitch2State(switch2_state);
-"100
-[e ( _updateSwitch2State (1 _switch2_state ]
-[; ;switch2.c: 101: wait_ms(20);
-"101
+[e = . . _LATCbits 0 4 -> -> ! != _f_state -> 0 `i `i `uc ]
+[; ;switch2.c: 99: wait_ms(20);
+"99
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;switch2.c: 102: }
+[; ;switch2.c: 101: LATCbits.LATC0 = 0;
+"101
+[e = . . _LATCbits 0 0 -> -> 0 `i `uc ]
+[; ;switch2.c: 102: LATCbits.LATC4 = 0;
 "102
+[e = . . _LATCbits 0 4 -> -> 0 `i `uc ]
+[; ;switch2.c: 104: updateSwitch2State(switch2_state);
+"104
+[e ( _updateSwitch2State (1 _switch2_state ]
+[; ;switch2.c: 105: wait_ms(20);
+"105
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;switch2.c: 106: }
+"106
 [e :UE 357 ]
 }

@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.37 build -260352376 
-                                                                                               Wed Dec 21 20:55:58 2016
+                                                                                               Mon Dec 26 23:32:24 2016
 
 Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110536
      1                           	processor	16F1503
@@ -1918,7 +1918,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   1912                           
   1913                           ;main.c: 34: initSwitch2();
   1914  035A  231F               	fcall	_initSwitch2
-  1915  035B                     l1548:	
+  1915  035B                     l1540:	
   1916                           ;main.c: 36: while (1) {
   1917                           
   1918                           
@@ -1927,7 +1927,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   1921                           
   1922                           ;main.c: 38: updateSwitch2();
   1923  035C  2021               	fcall	_updateSwitch2
-  1924  035D  2B5B               	goto	l1548
+  1924  035D  2B5B               	goto	l1540
   1925  035E                     __end_of_main:	
   1926                           
   1927                           	psect	text1
@@ -1973,7 +1973,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   1967                           ; Regs used in _updateSwitch2: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
   1968  0021  0020               	movlb	0	; select bank0
   1969  0022  1A8C               	btfsc	12,5	;volatile
-  1970  0023  2834               	goto	l1430
+  1970  0023  2834               	goto	l1424
   1971                           
   1972                           ;switch2.c: 37: if (switch2_pressed > 0) {
   1973  0024  0831               	movf	_switch2_pressed+1,w
@@ -1987,7 +1987,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   1981  002C  0230               	subwf	_switch2_pressed,w
   1982  002D                     u895:	
   1983  002D  1C03               	skipc
-  1984  002E  2844               	goto	l1434
+  1984  002E  2844               	goto	l1428
   1985                           
   1986                           ;switch2.c: 38: switch2_pressed--;
   1987  002F  30FF               	movlw	255
@@ -1995,7 +1995,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   1989  0031  07B0               	addwf	_switch2_pressed,f
   1990  0032  30FF               	movlw	255
   1991  0033  2843               	goto	L1
-  1992  0034                     l1430:	
+  1992  0034                     l1424:	
   1993                           ;switch2.c: 39: }
   1994                           ;switch2.c: 40: } else if (switch2_pressed < 25) {
   1995                           
@@ -2010,7 +2010,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2004  003C  0230               	subwf	_switch2_pressed,w
   2005  003D                     u905:	
   2006  003D  1803               	skipnc
-  2007  003E  2844               	goto	l1434
+  2007  003E  2844               	goto	l1428
   2008                           
   2009                           ;switch2.c: 41: switch2_pressed++;
   2010  003F  3001               	movlw	1
@@ -2019,7 +2019,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2013  0042  3000               	movlw	0
   2014  0043                     L1:	
   2015  0043  3DB1               	addwfc	_switch2_pressed+1,f
-  2016  0044                     l1434:	
+  2016  0044                     l1428:	
   2017                           
   2018                           ;switch2.c: 42: }
   2019                           ;switch2.c: 48: if (switch2_pressed == 0) {
@@ -2027,128 +2027,128 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2021  0045  0830               	movf	_switch2_pressed,w
   2022  0046  0431               	iorwf	_switch2_pressed+1,w
   2023  0047  1D03               	btfss	3,2
-  2024  0048  2881               	goto	l1458
+  2024  0048  2880               	goto	l1450
   2025                           
-  2026                           ;switch2.c: 56: switch2_down++;
+  2026                           ;switch2.c: 49: switch2_down++;
   2027  0049  3001               	movlw	1
   2028  004A  07AE               	addwf	_switch2_down,f
   2029  004B  3000               	movlw	0
   2030  004C  3DAF               	addwfc	_switch2_down+1,f
   2031                           
-  2032                           ;switch2.c: 57: if (switch2_state == 1) {
-  2033  004D  0340               	decf	_switch2_state,w
-  2034  004E  0441               	iorwf	_switch2_state+1,w
-  2035  004F  1D03               	btfss	3,2
-  2036  0050  2872               	goto	l1450
-  2037                           
-  2038                           ;switch2.c: 58: if (switch2_up == 1) {
-  2039  0051  0342               	decf	_switch2_up,w
-  2040  0052  0443               	iorwf	_switch2_up+1,w
-  2041  0053  1D03               	btfss	3,2
-  2042  0054  2859               	goto	l284
-  2043                           
-  2044                           ;switch2.c: 59: switch2_toggle = 1;
-  2045  0055  3001               	movlw	1
-  2046  0056  00B2               	movwf	_switch2_toggle
-  2047  0057  3000               	movlw	0
-  2048  0058  00B3               	movwf	_switch2_toggle+1
-  2049  0059                     l284:	
-  2050                           
-  2051                           ;switch2.c: 60: }
-  2052                           ;switch2.c: 62: if (switch2_down >= long_press_limit) {
-  2053  0059  082F               	movf	_switch2_down+1,w
-  2054  005A  3A80               	xorlw	128
-  2055  005B  00CB               	movwf	??_updateSwitch2
-  2056  005C  083B               	movf	_long_press_limit+1,w
-  2057  005D  3A80               	xorlw	128
-  2058  005E  024B               	subwf	??_updateSwitch2,w
-  2059  005F  1D03               	skipz
-  2060  0060  2863               	goto	u945
-  2061  0061  083A               	movf	_long_press_limit,w
-  2062  0062  022E               	subwf	_switch2_down,w
-  2063  0063                     u945:	
-  2064  0063  1C03               	skipc
-  2065  0064  287D               	goto	l1456
-  2066                           
-  2067                           ;switch2.c: 63: switch2_down = long_press_limit;
+  2032                           ;switch2.c: 59: if (switch2_down >= long_press_limit) {
+  2033  004D  082F               	movf	_switch2_down+1,w
+  2034  004E  3A80               	xorlw	128
+  2035  004F  00CB               	movwf	??_updateSwitch2
+  2036  0050  083B               	movf	_long_press_limit+1,w
+  2037  0051  3A80               	xorlw	128
+  2038  0052  024B               	subwf	??_updateSwitch2,w
+  2039  0053  1D03               	skipz
+  2040  0054  2857               	goto	u925
+  2041  0055  083A               	movf	_long_press_limit,w
+  2042  0056  022E               	subwf	_switch2_down,w
+  2043  0057                     u925:	
+  2044  0057  1C03               	skipc
+  2045  0058  2865               	goto	l1438
+  2046                           
+  2047                           ;switch2.c: 60: switch2_down = long_press_limit;
+  2048  0059  0020               	movlb	0	; select bank0
+  2049  005A  083B               	movf	_long_press_limit+1,w
+  2050  005B  00AF               	movwf	_switch2_down+1
+  2051  005C  083A               	movf	_long_press_limit,w
+  2052  005D  00AE               	movwf	_switch2_down
+  2053                           
+  2054                           ;switch2.c: 61: setSwitch1State(0);
+  2055  005E  3000               	movlw	0
+  2056  005F  00C9               	movwf	setSwitch1State@f_state
+  2057  0060  00CA               	movwf	setSwitch1State@f_state+1
+  2058  0061  21C4               	fcall	_setSwitch1State
+  2059                           
+  2060                           ;switch2.c: 62: switch2_toggle = 0;
+  2061  0062  0020               	movlb	0	; select bank0
+  2062  0063  01B2               	clrf	_switch2_toggle
+  2063  0064  01B3               	clrf	_switch2_toggle+1
+  2064  0065                     l1438:	
+  2065                           
+  2066                           ;switch2.c: 63: }
+  2067                           ;switch2.c: 65: if (switch2_state == 1) {
   2068  0065  0020               	movlb	0	; select bank0
-  2069  0066  083B               	movf	_long_press_limit+1,w
-  2070  0067  00AF               	movwf	_switch2_down+1
-  2071  0068  083A               	movf	_long_press_limit,w
-  2072  0069  00AE               	movwf	_switch2_down
+  2069  0066  0340               	decf	_switch2_state,w
+  2070  0067  0441               	iorwf	_switch2_state+1,w
+  2071  0068  1D03               	btfss	3,2
+  2072  0069  2875               	goto	l1446
   2073                           
-  2074                           ;switch2.c: 64: setSwitch1State(0);
-  2075  006A  3000               	movlw	0
-  2076  006B  00C9               	movwf	setSwitch1State@f_state
-  2077  006C  00CA               	movwf	setSwitch1State@f_state+1
-  2078  006D  21C4               	fcall	_setSwitch1State
+  2074                           ;switch2.c: 66: if (switch2_up == 1) {
+  2075  006A  0342               	decf	_switch2_up,w
+  2076  006B  0443               	iorwf	_switch2_up+1,w
+  2077  006C  1D03               	btfss	3,2
+  2078  006D  287D               	goto	l1448
   2079                           
-  2080                           ;switch2.c: 65: switch2_toggle = 0;
-  2081  006E  0020               	movlb	0	; select bank0
-  2082  006F  01B2               	clrf	_switch2_toggle
-  2083  0070  01B3               	clrf	_switch2_toggle+1
-  2084                           
-  2085                           ;switch2.c: 66: }
-  2086                           ;switch2.c: 67: } else {
-  2087  0071  287D               	goto	l1456
-  2088  0072                     l1450:	
+  2080                           ;switch2.c: 67: switch2_toggle = 1;
+  2081  006E  3001               	movlw	1
+  2082  006F  00B2               	movwf	_switch2_toggle
+  2083  0070  3000               	movlw	0
+  2084  0071  00B3               	movwf	_switch2_toggle+1
+  2085                           
+  2086                           ;switch2.c: 68: switch2_turning_on = 0;
+  2087  0072  01B4               	clrf	_switch2_turning_on
+  2088  0073  01B5               	clrf	_switch2_turning_on+1
   2089                           
-  2090                           ;switch2.c: 69: switch2_turning_on = 1;
-  2091  0072  3001               	movlw	1
-  2092  0073  00B4               	movwf	_switch2_turning_on
-  2093  0074  3000               	movlw	0
-  2094  0075  00B5               	movwf	_switch2_turning_on+1
-  2095                           
-  2096                           ;switch2.c: 70: switch2_toggle = 0;
-  2097  0076  01B2               	clrf	_switch2_toggle
-  2098  0077  01B3               	clrf	_switch2_toggle+1
-  2099                           
-  2100                           ;switch2.c: 71: setSwitch2State(1);
-  2101  0078  3001               	movlw	1
-  2102  0079  00C9               	movwf	setSwitch2State@f_state
-  2103  007A  3000               	movlw	0
-  2104  007B  00CA               	movwf	setSwitch2State@f_state+1
-  2105  007C  218A               	fcall	_setSwitch2State
-  2106  007D                     l1456:	
+  2090                           ;switch2.c: 69: }
+  2091                           ;switch2.c: 71: } else {
+  2092  0074  287D               	goto	l1448
+  2093  0075                     l1446:	
+  2094                           
+  2095                           ;switch2.c: 73: switch2_turning_on = 1;
+  2096  0075  3001               	movlw	1
+  2097  0076  00B4               	movwf	_switch2_turning_on
+  2098  0077  3000               	movlw	0
+  2099  0078  00B5               	movwf	_switch2_turning_on+1
+  2100                           
+  2101                           ;switch2.c: 74: switch2_toggle = 1;
+  2102  0079  3001               	movlw	1
+  2103  007A  00B2               	movwf	_switch2_toggle
+  2104  007B  3000               	movlw	0
+  2105  007C  00B3               	movwf	_switch2_toggle+1
+  2106  007D                     l1448:	
   2107                           
-  2108                           ;switch2.c: 72: }
-  2109                           ;switch2.c: 74: switch2_up = 0;
-  2110  007D  0020               	movlb	0	; select bank0
-  2111  007E  01C2               	clrf	_switch2_up
-  2112  007F  01C3               	clrf	_switch2_up+1
-  2113                           
-  2114                           ;switch2.c: 75: } else if (switch2_pressed >= 25) {
-  2115  0080  0008               	return
-  2116  0081                     l1458:	
-  2117  0081  0831               	movf	_switch2_pressed+1,w
-  2118  0082  3A80               	xorlw	128
-  2119  0083  00CB               	movwf	??_updateSwitch2
-  2120  0084  3080               	movlw	128
-  2121  0085  024B               	subwf	??_updateSwitch2,w
-  2122  0086  1D03               	skipz
-  2123  0087  288A               	goto	u955
-  2124  0088  3019               	movlw	25
-  2125  0089  0230               	subwf	_switch2_pressed,w
-  2126  008A                     u955:	
-  2127  008A  1C03               	skipc
-  2128  008B  0008               	return
-  2129                           
-  2130                           ;switch2.c: 76: if (switch2_toggle == 1) {
-  2131  008C  0020               	movlb	0	; select bank0
-  2132  008D  0332               	decf	_switch2_toggle,w
-  2133  008E  0433               	iorwf	_switch2_toggle+1,w
-  2134  008F  1D03               	btfss	3,2
-  2135  0090  2895               	goto	l1464
-  2136                           
-  2137                           ;switch2.c: 77: setSwitch2State(0);
-  2138  0091  3000               	movlw	0
-  2139  0092  00C9               	movwf	setSwitch2State@f_state
-  2140  0093  00CA               	movwf	setSwitch2State@f_state+1
+  2108                           ;switch2.c: 76: }
+  2109                           ;switch2.c: 78: switch2_up = 0;
+  2110  007D  01C2               	clrf	_switch2_up
+  2111  007E  01C3               	clrf	_switch2_up+1
+  2112                           
+  2113                           ;switch2.c: 79: } else if (switch2_pressed >= 25) {
+  2114  007F  0008               	return
+  2115  0080                     l1450:	
+  2116  0080  0831               	movf	_switch2_pressed+1,w
+  2117  0081  3A80               	xorlw	128
+  2118  0082  00CB               	movwf	??_updateSwitch2
+  2119  0083  3080               	movlw	128
+  2120  0084  024B               	subwf	??_updateSwitch2,w
+  2121  0085  1D03               	skipz
+  2122  0086  2889               	goto	u955
+  2123  0087  3019               	movlw	25
+  2124  0088  0230               	subwf	_switch2_pressed,w
+  2125  0089                     u955:	
+  2126  0089  1C03               	skipc
+  2127  008A  0008               	return
+  2128                           
+  2129                           ;switch2.c: 80: if (switch2_toggle == 1) {
+  2130  008B  0020               	movlb	0	; select bank0
+  2131  008C  0332               	decf	_switch2_toggle,w
+  2132  008D  0433               	iorwf	_switch2_toggle+1,w
+  2133  008E  1D03               	btfss	3,2
+  2134  008F  2895               	goto	l1456
+  2135                           
+  2136                           ;switch2.c: 81: setSwitch2State(switch2_turning_on);
+  2137  0090  0835               	movf	_switch2_turning_on+1,w
+  2138  0091  00CA               	movwf	setSwitch2State@f_state+1
+  2139  0092  0834               	movf	_switch2_turning_on,w
+  2140  0093  00C9               	movwf	setSwitch2State@f_state
   2141  0094  218A               	fcall	_setSwitch2State
-  2142  0095                     l1464:	
+  2142  0095                     l1456:	
   2143                           
-  2144                           ;switch2.c: 78: }
-  2145                           ;switch2.c: 79: LATCbits.LATC5 = switch2_state;
+  2144                           ;switch2.c: 82: }
+  2145                           ;switch2.c: 83: LATCbits.LATC5 = switch2_state;
   2146  0095  0020               	movlb	0	; select bank0
   2147  0096  0C40               	rrf	_switch2_state,w
   2148  0097  0022               	movlb	2	; select bank2
@@ -2157,26 +2157,26 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2151  009A  1803               	skipnc
   2152  009B  168E               	bsf	14,5	;volatile
   2153                           
-  2154                           ;switch2.c: 80: switch2_turning_on = 0;
+  2154                           ;switch2.c: 84: switch2_turning_on = 0;
   2155  009C  0020               	movlb	0	; select bank0
   2156  009D  01B4               	clrf	_switch2_turning_on
   2157  009E  01B5               	clrf	_switch2_turning_on+1
   2158                           
-  2159                           ;switch2.c: 81: switch2_toggle = 0;
+  2159                           ;switch2.c: 85: switch2_toggle = 0;
   2160  009F  01B2               	clrf	_switch2_toggle
   2161  00A0  01B3               	clrf	_switch2_toggle+1
   2162                           
-  2163                           ;switch2.c: 82: switch2_up = 1;
+  2163                           ;switch2.c: 86: switch2_up = 1;
   2164  00A1  3001               	movlw	1
   2165  00A2  00C2               	movwf	_switch2_up
   2166  00A3  3000               	movlw	0
   2167  00A4  00C3               	movwf	_switch2_up+1
   2168                           
-  2169                           ;switch2.c: 83: switch2_down = 0;
+  2169                           ;switch2.c: 87: switch2_down = 0;
   2170  00A5  01AE               	clrf	_switch2_down
   2171  00A6  01AF               	clrf	_switch2_down+1
   2172                           
-  2173                           ;switch2.c: 84: switch2_pressed = 25;
+  2173                           ;switch2.c: 88: switch2_pressed = 25;
   2174  00A7  3019               	movlw	25
   2175  00A8  00B0               	movwf	_switch2_pressed
   2176  00A9  3000               	movlw	0
@@ -2227,7 +2227,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2221                           ; Regs used in _updateSwitch1: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
   2222  00AC  0020               	movlb	0	; select bank0
   2223  00AD  1A0C               	btfsc	12,4	;volatile
-  2224  00AE  28BF               	goto	l1378
+  2224  00AE  28BF               	goto	l1374
   2225                           
   2226                           ;switch1.c: 37: if (switch1_pressed > 0) {
   2227  00AF  0829               	movf	_switch1_pressed+1,w
@@ -2241,7 +2241,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2235  00B7  0228               	subwf	_switch1_pressed,w
   2236  00B8                     u805:	
   2237  00B8  1C03               	skipc
-  2238  00B9  28CF               	goto	l1382
+  2238  00B9  28CF               	goto	l1378
   2239                           
   2240                           ;switch1.c: 38: switch1_pressed--;
   2241  00BA  30FF               	movlw	255
@@ -2249,7 +2249,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2243  00BC  07A8               	addwf	_switch1_pressed,f
   2244  00BD  30FF               	movlw	255
   2245  00BE  28CE               	goto	L2
-  2246  00BF                     l1378:	
+  2246  00BF                     l1374:	
   2247                           ;switch1.c: 39: }
   2248                           ;switch1.c: 40: } else if (switch1_pressed < 25) {
   2249                           
@@ -2264,7 +2264,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2258  00C7  0228               	subwf	_switch1_pressed,w
   2259  00C8                     u815:	
   2260  00C8  1803               	skipnc
-  2261  00C9  28CF               	goto	l1382
+  2261  00C9  28CF               	goto	l1378
   2262                           
   2263                           ;switch1.c: 41: switch1_pressed++;
   2264  00CA  3001               	movlw	1
@@ -2273,7 +2273,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2267  00CD  3000               	movlw	0
   2268  00CE                     L2:	
   2269  00CE  3DA9               	addwfc	_switch1_pressed+1,f
-  2270  00CF                     l1382:	
+  2270  00CF                     l1378:	
   2271                           
   2272                           ;switch1.c: 42: }
   2273                           ;switch1.c: 48: if (switch1_pressed == 0) {
@@ -2281,7 +2281,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2275  00D0  0828               	movf	_switch1_pressed,w
   2276  00D1  0429               	iorwf	_switch1_pressed+1,w
   2277  00D2  1D03               	btfss	3,2
-  2278  00D3  290C               	goto	l1406
+  2278  00D3  290B               	goto	l1400
   2279                           
   2280                           ;switch1.c: 49: switch1_down++;
   2281  00D4  3001               	movlw	1
@@ -2289,120 +2289,120 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2283  00D6  3000               	movlw	0
   2284  00D7  3DA7               	addwfc	_switch1_down+1,f
   2285                           
-  2286                           ;switch1.c: 50: if (switch1_state == 1) {
-  2287  00D8  033C               	decf	_switch1_state,w
-  2288  00D9  043D               	iorwf	_switch1_state+1,w
-  2289  00DA  1D03               	btfss	3,2
-  2290  00DB  28FD               	goto	l1398
-  2291                           
-  2292                           ;switch1.c: 51: if (switch1_up == 1) {
-  2293  00DC  033E               	decf	_switch1_up,w
-  2294  00DD  043F               	iorwf	_switch1_up+1,w
-  2295  00DE  1D03               	btfss	3,2
-  2296  00DF  28E4               	goto	l234
-  2297                           
-  2298                           ;switch1.c: 52: switch1_toggle = 1;
-  2299  00E0  3001               	movlw	1
-  2300  00E1  00AA               	movwf	_switch1_toggle
-  2301  00E2  3000               	movlw	0
-  2302  00E3  00AB               	movwf	_switch1_toggle+1
-  2303  00E4                     l234:	
-  2304                           
-  2305                           ;switch1.c: 53: }
-  2306                           ;switch1.c: 55: if (switch1_down >= long_press_limit) {
-  2307  00E4  0827               	movf	_switch1_down+1,w
-  2308  00E5  3A80               	xorlw	128
-  2309  00E6  00CB               	movwf	??_updateSwitch1
-  2310  00E7  083B               	movf	_long_press_limit+1,w
-  2311  00E8  3A80               	xorlw	128
-  2312  00E9  024B               	subwf	??_updateSwitch1,w
-  2313  00EA  1D03               	skipz
-  2314  00EB  28EE               	goto	u855
-  2315  00EC  083A               	movf	_long_press_limit,w
-  2316  00ED  0226               	subwf	_switch1_down,w
-  2317  00EE                     u855:	
-  2318  00EE  1C03               	skipc
-  2319  00EF  2908               	goto	l1404
-  2320                           
-  2321                           ;switch1.c: 56: switch1_down = long_press_limit;
+  2286                           ;switch1.c: 59: if (switch1_down >= long_press_limit) {
+  2287  00D8  0827               	movf	_switch1_down+1,w
+  2288  00D9  3A80               	xorlw	128
+  2289  00DA  00CB               	movwf	??_updateSwitch1
+  2290  00DB  083B               	movf	_long_press_limit+1,w
+  2291  00DC  3A80               	xorlw	128
+  2292  00DD  024B               	subwf	??_updateSwitch1,w
+  2293  00DE  1D03               	skipz
+  2294  00DF  28E2               	goto	u835
+  2295  00E0  083A               	movf	_long_press_limit,w
+  2296  00E1  0226               	subwf	_switch1_down,w
+  2297  00E2                     u835:	
+  2298  00E2  1C03               	skipc
+  2299  00E3  28F0               	goto	l1388
+  2300                           
+  2301                           ;switch1.c: 60: switch1_down = long_press_limit;
+  2302  00E4  0020               	movlb	0	; select bank0
+  2303  00E5  083B               	movf	_long_press_limit+1,w
+  2304  00E6  00A7               	movwf	_switch1_down+1
+  2305  00E7  083A               	movf	_long_press_limit,w
+  2306  00E8  00A6               	movwf	_switch1_down
+  2307                           
+  2308                           ;switch1.c: 61: setSwitch2State(0);
+  2309  00E9  3000               	movlw	0
+  2310  00EA  00C9               	movwf	setSwitch2State@f_state
+  2311  00EB  00CA               	movwf	setSwitch2State@f_state+1
+  2312  00EC  218A               	fcall	_setSwitch2State
+  2313                           
+  2314                           ;switch1.c: 62: switch1_toggle = 0;
+  2315  00ED  0020               	movlb	0	; select bank0
+  2316  00EE  01AA               	clrf	_switch1_toggle
+  2317  00EF  01AB               	clrf	_switch1_toggle+1
+  2318  00F0                     l1388:	
+  2319                           
+  2320                           ;switch1.c: 63: }
+  2321                           ;switch1.c: 65: if (switch1_state == 1) {
   2322  00F0  0020               	movlb	0	; select bank0
-  2323  00F1  083B               	movf	_long_press_limit+1,w
-  2324  00F2  00A7               	movwf	_switch1_down+1
-  2325  00F3  083A               	movf	_long_press_limit,w
-  2326  00F4  00A6               	movwf	_switch1_down
+  2323  00F1  033C               	decf	_switch1_state,w
+  2324  00F2  043D               	iorwf	_switch1_state+1,w
+  2325  00F3  1D03               	btfss	3,2
+  2326  00F4  2900               	goto	l1396
   2327                           
-  2328                           ;switch1.c: 57: setSwitch2State(0);
-  2329  00F5  3000               	movlw	0
-  2330  00F6  00C9               	movwf	setSwitch2State@f_state
-  2331  00F7  00CA               	movwf	setSwitch2State@f_state+1
-  2332  00F8  218A               	fcall	_setSwitch2State
+  2328                           ;switch1.c: 66: if (switch1_up == 1) {
+  2329  00F5  033E               	decf	_switch1_up,w
+  2330  00F6  043F               	iorwf	_switch1_up+1,w
+  2331  00F7  1D03               	btfss	3,2
+  2332  00F8  2908               	goto	l1398
   2333                           
-  2334                           ;switch1.c: 58: switch1_toggle = 0;
-  2335  00F9  0020               	movlb	0	; select bank0
-  2336  00FA  01AA               	clrf	_switch1_toggle
-  2337  00FB  01AB               	clrf	_switch1_toggle+1
-  2338                           
-  2339                           ;switch1.c: 59: }
-  2340                           ;switch1.c: 60: } else {
-  2341  00FC  2908               	goto	l1404
-  2342  00FD                     l1398:	
+  2334                           ;switch1.c: 67: switch1_toggle = 1;
+  2335  00F9  3001               	movlw	1
+  2336  00FA  00AA               	movwf	_switch1_toggle
+  2337  00FB  3000               	movlw	0
+  2338  00FC  00AB               	movwf	_switch1_toggle+1
+  2339                           
+  2340                           ;switch1.c: 68: switch1_turning_on = 0;
+  2341  00FD  01AC               	clrf	_switch1_turning_on
+  2342  00FE  01AD               	clrf	_switch1_turning_on+1
   2343                           
-  2344                           ;switch1.c: 62: switch1_turning_on = 1;
-  2345  00FD  3001               	movlw	1
-  2346  00FE  00AC               	movwf	_switch1_turning_on
-  2347  00FF  3000               	movlw	0
-  2348  0100  00AD               	movwf	_switch1_turning_on+1
-  2349                           
-  2350                           ;switch1.c: 63: switch1_toggle = 0;
-  2351  0101  01AA               	clrf	_switch1_toggle
-  2352  0102  01AB               	clrf	_switch1_toggle+1
-  2353                           
-  2354                           ;switch1.c: 64: setSwitch1State(1);
-  2355  0103  3001               	movlw	1
-  2356  0104  00C9               	movwf	setSwitch1State@f_state
-  2357  0105  3000               	movlw	0
-  2358  0106  00CA               	movwf	setSwitch1State@f_state+1
-  2359  0107  21C4               	fcall	_setSwitch1State
-  2360  0108                     l1404:	
+  2344                           ;switch1.c: 69: }
+  2345                           ;switch1.c: 71: } else {
+  2346  00FF  2908               	goto	l1398
+  2347  0100                     l1396:	
+  2348                           
+  2349                           ;switch1.c: 73: switch1_turning_on = 1;
+  2350  0100  3001               	movlw	1
+  2351  0101  00AC               	movwf	_switch1_turning_on
+  2352  0102  3000               	movlw	0
+  2353  0103  00AD               	movwf	_switch1_turning_on+1
+  2354                           
+  2355                           ;switch1.c: 74: switch1_toggle = 1;
+  2356  0104  3001               	movlw	1
+  2357  0105  00AA               	movwf	_switch1_toggle
+  2358  0106  3000               	movlw	0
+  2359  0107  00AB               	movwf	_switch1_toggle+1
+  2360  0108                     l1398:	
   2361                           
-  2362                           ;switch1.c: 65: }
-  2363                           ;switch1.c: 67: switch1_up = 0;
-  2364  0108  0020               	movlb	0	; select bank0
-  2365  0109  01BE               	clrf	_switch1_up
-  2366  010A  01BF               	clrf	_switch1_up+1
-  2367                           
-  2368                           ;switch1.c: 68: } else if (switch1_pressed >= 25) {
-  2369  010B  0008               	return
-  2370  010C                     l1406:	
-  2371  010C  0829               	movf	_switch1_pressed+1,w
-  2372  010D  3A80               	xorlw	128
-  2373  010E  00CB               	movwf	??_updateSwitch1
-  2374  010F  3080               	movlw	128
-  2375  0110  024B               	subwf	??_updateSwitch1,w
-  2376  0111  1D03               	skipz
-  2377  0112  2915               	goto	u865
-  2378  0113  3019               	movlw	25
-  2379  0114  0228               	subwf	_switch1_pressed,w
-  2380  0115                     u865:	
-  2381  0115  1C03               	skipc
-  2382  0116  0008               	return
-  2383                           
-  2384                           ;switch1.c: 69: if (switch1_toggle == 1) {
-  2385  0117  0020               	movlb	0	; select bank0
-  2386  0118  032A               	decf	_switch1_toggle,w
-  2387  0119  042B               	iorwf	_switch1_toggle+1,w
-  2388  011A  1D03               	btfss	3,2
-  2389  011B  2920               	goto	l1412
-  2390                           
-  2391                           ;switch1.c: 70: setSwitch1State(0);
-  2392  011C  3000               	movlw	0
-  2393  011D  00C9               	movwf	setSwitch1State@f_state
-  2394  011E  00CA               	movwf	setSwitch1State@f_state+1
+  2362                           ;switch1.c: 76: }
+  2363                           ;switch1.c: 78: switch1_up = 0;
+  2364  0108  01BE               	clrf	_switch1_up
+  2365  0109  01BF               	clrf	_switch1_up+1
+  2366                           
+  2367                           ;switch1.c: 79: } else if (switch1_pressed >= 25) {
+  2368  010A  0008               	return
+  2369  010B                     l1400:	
+  2370  010B  0829               	movf	_switch1_pressed+1,w
+  2371  010C  3A80               	xorlw	128
+  2372  010D  00CB               	movwf	??_updateSwitch1
+  2373  010E  3080               	movlw	128
+  2374  010F  024B               	subwf	??_updateSwitch1,w
+  2375  0110  1D03               	skipz
+  2376  0111  2914               	goto	u865
+  2377  0112  3019               	movlw	25
+  2378  0113  0228               	subwf	_switch1_pressed,w
+  2379  0114                     u865:	
+  2380  0114  1C03               	skipc
+  2381  0115  0008               	return
+  2382                           
+  2383                           ;switch1.c: 80: if (switch1_toggle == 1) {
+  2384  0116  0020               	movlb	0	; select bank0
+  2385  0117  032A               	decf	_switch1_toggle,w
+  2386  0118  042B               	iorwf	_switch1_toggle+1,w
+  2387  0119  1D03               	btfss	3,2
+  2388  011A  2920               	goto	l1406
+  2389                           
+  2390                           ;switch1.c: 81: setSwitch1State(switch1_turning_on);
+  2391  011B  082D               	movf	_switch1_turning_on+1,w
+  2392  011C  00CA               	movwf	setSwitch1State@f_state+1
+  2393  011D  082C               	movf	_switch1_turning_on,w
+  2394  011E  00C9               	movwf	setSwitch1State@f_state
   2395  011F  21C4               	fcall	_setSwitch1State
-  2396  0120                     l1412:	
+  2396  0120                     l1406:	
   2397                           
-  2398                           ;switch1.c: 71: }
-  2399                           ;switch1.c: 72: LATAbits.LATA2 = switch1_state;
+  2398                           ;switch1.c: 82: }
+  2399                           ;switch1.c: 83: LATAbits.LATA2 = switch1_state;
   2400  0120  0020               	movlb	0	; select bank0
   2401  0121  0C3C               	rrf	_switch1_state,w
   2402  0122  0022               	movlb	2	; select bank2
@@ -2411,26 +2411,26 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2405  0125  1803               	skipnc
   2406  0126  150C               	bsf	12,2	;volatile
   2407                           
-  2408                           ;switch1.c: 73: switch1_turning_on = 0;
+  2408                           ;switch1.c: 84: switch1_turning_on = 0;
   2409  0127  0020               	movlb	0	; select bank0
   2410  0128  01AC               	clrf	_switch1_turning_on
   2411  0129  01AD               	clrf	_switch1_turning_on+1
   2412                           
-  2413                           ;switch1.c: 74: switch1_toggle = 0;
+  2413                           ;switch1.c: 85: switch1_toggle = 0;
   2414  012A  01AA               	clrf	_switch1_toggle
   2415  012B  01AB               	clrf	_switch1_toggle+1
   2416                           
-  2417                           ;switch1.c: 75: switch1_up = 1;
+  2417                           ;switch1.c: 86: switch1_up = 1;
   2418  012C  3001               	movlw	1
   2419  012D  00BE               	movwf	_switch1_up
   2420  012E  3000               	movlw	0
   2421  012F  00BF               	movwf	_switch1_up+1
   2422                           
-  2423                           ;switch1.c: 76: switch1_down = 0;
+  2423                           ;switch1.c: 87: switch1_down = 0;
   2424  0130  01A6               	clrf	_switch1_down
   2425  0131  01A7               	clrf	_switch1_down+1
   2426                           
-  2427                           ;switch1.c: 77: switch1_pressed = 25;
+  2427                           ;switch1.c: 88: switch1_pressed = 25;
   2428  0132  3019               	movlw	25
   2429  0133  00A8               	movwf	_switch1_pressed
   2430  0134  3000               	movlw	0
@@ -2499,7 +2499,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2493  018A                     __ptext4:	
   2494 ;; *************** function _setSwitch2State *****************
   2495 ;; Defined at:
-  2496 ;;		line 88 in file "switch2.c"
+  2496 ;;		line 92 in file "switch2.c"
   2497 ;; Parameters:    Size  Location     Type
   2498 ;;  f_state         2    5[BANK0 ] int 
   2499 ;; Auto vars:     Size  Location     Type
@@ -2534,7 +2534,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2528                           ;psect for function _setSwitch2State
   2529  018A                     _setSwitch2State:	
   2530                           
-  2531                           ;switch2.c: 89: if (switch2_state == f_state) {return;}
+  2531                           ;switch2.c: 93: if (switch2_state == f_state) {return;}
   2532                           
   2533                           ;incstack = 0
   2534                           ; Regs used in _setSwitch2State: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -2549,13 +2549,13 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2543  0191  1903               	btfsc	3,2
   2544  0192  0008               	return
   2545                           
-  2546                           ;switch2.c: 90: switch2_state = f_state;
+  2546                           ;switch2.c: 94: switch2_state = f_state;
   2547  0193  084A               	movf	setSwitch2State@f_state+1,w
   2548  0194  00C1               	movwf	_switch2_state+1
   2549  0195  0849               	movf	setSwitch2State@f_state,w
   2550  0196  00C0               	movwf	_switch2_state
   2551                           
-  2552                           ;switch2.c: 91: LATCbits.LATC5 = f_state;
+  2552                           ;switch2.c: 95: LATCbits.LATC5 = f_state;
   2553  0197  0C49               	rrf	setSwitch2State@f_state,w
   2554  0198  0022               	movlb	2	; select bank2
   2555  0199  1C03               	skipc
@@ -2563,7 +2563,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2557  019B  1803               	skipnc
   2558  019C  168E               	bsf	14,5	;volatile
   2559                           
-  2560                           ;switch2.c: 92: LATCbits.LATC0 = f_state;
+  2560                           ;switch2.c: 96: LATCbits.LATC0 = f_state;
   2561  019D  0020               	movlb	0	; select bank0
   2562  019E  0C49               	rrf	setSwitch2State@f_state,w
   2563  019F  0022               	movlb	2	; select bank2
@@ -2572,7 +2572,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2566  01A2  1803               	skipnc
   2567  01A3  140E               	bsf	14,0	;volatile
   2568                           
-  2569                           ;switch2.c: 93: LATCbits.LATC4 = !f_state;
+  2569                           ;switch2.c: 97: LATCbits.LATC4 = !f_state;
   2570  01A4  0020               	movlb	0	; select bank0
   2571  01A5  0849               	movf	setSwitch2State@f_state,w
   2572  01A6  044A               	iorwf	setSwitch2State@f_state+1,w
@@ -2580,13 +2580,13 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2574  01A8  29AC               	goto	u770
   2575  01A9  0022               	movlb	2	; select bank2
   2576  01AA  160E               	bsf	14,4	;volatile
-  2577  01AB  29AE               	goto	l1358
+  2577  01AB  29AE               	goto	l1354
   2578  01AC                     u770:	
   2579  01AC  0022               	movlb	2	; select bank2
   2580  01AD  120E               	bcf	14,4	;volatile
-  2581  01AE                     l1358:	
+  2581  01AE                     l1354:	
   2582                           
-  2583                           ;switch2.c: 95: wait_ms(20);
+  2583                           ;switch2.c: 99: wait_ms(20);
   2584  01AE  3014               	movlw	20
   2585  01AF  0020               	movlb	0	; select bank0
   2586  01B0  00C4               	movwf	wait_ms@time
@@ -2594,14 +2594,14 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2588  01B2  00C5               	movwf	wait_ms@time+1
   2589  01B3  2261               	fcall	_wait_ms
   2590                           
-  2591                           ;switch2.c: 97: LATCbits.LATC0 = 0;
+  2591                           ;switch2.c: 101: LATCbits.LATC0 = 0;
   2592  01B4  0022               	movlb	2	; select bank2
   2593  01B5  100E               	bcf	14,0	;volatile
   2594                           
-  2595                           ;switch2.c: 98: LATCbits.LATC4 = 0;
+  2595                           ;switch2.c: 102: LATCbits.LATC4 = 0;
   2596  01B6  120E               	bcf	14,4	;volatile
   2597                           
-  2598                           ;switch2.c: 100: updateSwitch2State(switch2_state);
+  2598                           ;switch2.c: 104: updateSwitch2State(switch2_state);
   2599  01B7  0020               	movlb	0	; select bank0
   2600  01B8  0841               	movf	_switch2_state+1,w
   2601  01B9  00C8               	movwf	updateSwitch2State@state+1
@@ -2609,7 +2609,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2603  01BB  00C7               	movwf	updateSwitch2State@state
   2604  01BC  2305               	fcall	_updateSwitch2State
   2605                           
-  2606                           ;switch2.c: 101: wait_ms(20);
+  2606                           ;switch2.c: 105: wait_ms(20);
   2607  01BD  3014               	movlw	20
   2608  01BE  0020               	movlb	0	; select bank0
   2609  01BF  00C4               	movwf	wait_ms@time
@@ -2663,10 +2663,10 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2657  0306  0347               	decf	updateSwitch2State@state,w
   2658  0307  0448               	iorwf	updateSwitch2State@state+1,w
   2659  0308  1903               	btfsc	3,2
-  2660  0309  2B0C               	goto	l1306
+  2660  0309  2B0C               	goto	l1302
   2661  030A  01C7               	clrf	updateSwitch2State@state
   2662  030B  01C8               	clrf	updateSwitch2State@state+1
-  2663  030C                     l1306:	
+  2663  030C                     l1302:	
   2664                           
   2665                           ;state_manager.c: 68: pedalState.switch2 = state;
   2666  030C  0848               	movf	updateSwitch2State@state+1,w
@@ -2723,11 +2723,11 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2717  032C  0824               	movf	_isInitialized,w
   2718  032D  0425               	iorwf	_isInitialized+1,w
   2719  032E  1D03               	btfss	3,2
-  2720  032F  2B31               	goto	l1320
+  2720  032F  2B31               	goto	l1316
   2721                           
   2722                           ;state_manager.c: 51: initStateManager();
   2723  0330  2371               	fcall	_initStateManager
-  2724  0331                     l1320:	
+  2724  0331                     l1316:	
   2725                           
   2726                           ;state_manager.c: 52: }
   2727                           ;state_manager.c: 53: return pedalState.switch2;
@@ -2849,7 +2849,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2843  01C4                     __ptext9:	
   2844 ;; *************** function _setSwitch1State *****************
   2845 ;; Defined at:
-  2846 ;;		line 81 in file "switch1.c"
+  2846 ;;		line 92 in file "switch1.c"
   2847 ;; Parameters:    Size  Location     Type
   2848 ;;  f_state         2    5[BANK0 ] int 
   2849 ;; Auto vars:     Size  Location     Type
@@ -2884,7 +2884,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2878                           ;psect for function _setSwitch1State
   2879  01C4                     _setSwitch1State:	
   2880                           
-  2881                           ;switch1.c: 82: if (switch1_state == f_state) {return;}
+  2881                           ;switch1.c: 93: if (switch1_state == f_state) {return;}
   2882                           
   2883                           ;incstack = 0
   2884                           ; Regs used in _setSwitch1State: [wreg+fsr1l+fsr1h+status,2+status,0+pclath+cstack]
@@ -2899,13 +2899,13 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2893  01CB  1903               	btfsc	3,2
   2894  01CC  0008               	return
   2895                           
-  2896                           ;switch1.c: 83: switch1_state = f_state;
+  2896                           ;switch1.c: 94: switch1_state = f_state;
   2897  01CD  084A               	movf	setSwitch1State@f_state+1,w
   2898  01CE  00BD               	movwf	_switch1_state+1
   2899  01CF  0849               	movf	setSwitch1State@f_state,w
   2900  01D0  00BC               	movwf	_switch1_state
   2901                           
-  2902                           ;switch1.c: 84: LATAbits.LATA2 = f_state;
+  2902                           ;switch1.c: 95: LATAbits.LATA2 = f_state;
   2903  01D1  0C49               	rrf	setSwitch1State@f_state,w
   2904  01D2  0022               	movlb	2	; select bank2
   2905  01D3  1C03               	skipc
@@ -2913,7 +2913,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2907  01D5  1803               	skipnc
   2908  01D6  150C               	bsf	12,2	;volatile
   2909                           
-  2910                           ;switch1.c: 85: LATCbits.LATC2 = f_state;
+  2910                           ;switch1.c: 96: LATCbits.LATC2 = f_state;
   2911  01D7  0020               	movlb	0	; select bank0
   2912  01D8  0C49               	rrf	setSwitch1State@f_state,w
   2913  01D9  0022               	movlb	2	; select bank2
@@ -2922,7 +2922,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2916  01DC  1803               	skipnc
   2917  01DD  150E               	bsf	14,2	;volatile
   2918                           
-  2919                           ;switch1.c: 86: LATCbits.LATC1 = !f_state;
+  2919                           ;switch1.c: 97: LATCbits.LATC1 = !f_state;
   2920  01DE  0020               	movlb	0	; select bank0
   2921  01DF  0849               	movf	setSwitch1State@f_state,w
   2922  01E0  044A               	iorwf	setSwitch1State@f_state+1,w
@@ -2930,13 +2930,13 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2924  01E2  29E6               	goto	u740
   2925  01E3  0022               	movlb	2	; select bank2
   2926  01E4  148E               	bsf	14,1	;volatile
-  2927  01E5  29E8               	goto	l1336
+  2927  01E5  29E8               	goto	l1332
   2928  01E6                     u740:	
   2929  01E6  0022               	movlb	2	; select bank2
   2930  01E7  108E               	bcf	14,1	;volatile
-  2931  01E8                     l1336:	
+  2931  01E8                     l1332:	
   2932                           
-  2933                           ;switch1.c: 88: wait_ms(20);
+  2933                           ;switch1.c: 99: wait_ms(20);
   2934  01E8  3014               	movlw	20
   2935  01E9  0020               	movlb	0	; select bank0
   2936  01EA  00C4               	movwf	wait_ms@time
@@ -2944,14 +2944,14 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2938  01EC  00C5               	movwf	wait_ms@time+1
   2939  01ED  2261               	fcall	_wait_ms
   2940                           
-  2941                           ;switch1.c: 90: LATCbits.LATC2 = 0;
+  2941                           ;switch1.c: 101: LATCbits.LATC2 = 0;
   2942  01EE  0022               	movlb	2	; select bank2
   2943  01EF  110E               	bcf	14,2	;volatile
   2944                           
-  2945                           ;switch1.c: 91: LATCbits.LATC1 = 0;
+  2945                           ;switch1.c: 102: LATCbits.LATC1 = 0;
   2946  01F0  108E               	bcf	14,1	;volatile
   2947                           
-  2948                           ;switch1.c: 93: updateSwitch1State(switch1_state);
+  2948                           ;switch1.c: 104: updateSwitch1State(switch1_state);
   2949  01F1  0020               	movlb	0	; select bank0
   2950  01F2  083D               	movf	_switch1_state+1,w
   2951  01F3  00C8               	movwf	updateSwitch1State@state+1
@@ -2959,7 +2959,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   2953  01F5  00C7               	movwf	updateSwitch1State@state
   2954  01F6  2312               	fcall	_updateSwitch1State
   2955                           
-  2956                           ;switch1.c: 94: wait_ms(20);
+  2956                           ;switch1.c: 105: wait_ms(20);
   2957  01F7  3014               	movlw	20
   2958  01F8  0020               	movlb	0	; select bank0
   2959  01F9  00C4               	movwf	wait_ms@time
@@ -3103,9 +3103,9 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3097  0237  00FA               	movwf	___lmul@product+1
   3098  0238  3000               	movlw	0
   3099  0239  00F9               	movwf	___lmul@product
-  3100  023A                     l1274:	
+  3100  023A                     l1270:	
   3101  023A  1C71               	btfss	___lmul@multiplier,0
-  3102  023B  2A44               	goto	l1278
+  3102  023B  2A44               	goto	l1274
   3103  023C  0875               	movf	___lmul@multiplicand,w
   3104  023D  07F9               	addwf	___lmul@product,f
   3105  023E  0876               	movf	___lmul@multiplicand+1,w
@@ -3114,7 +3114,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3108  0241  3DFB               	addwfc	___lmul@product+2,f
   3109  0242  0878               	movf	___lmul@multiplicand+3,w
   3110  0243  3DFC               	addwfc	___lmul@product+3,f
-  3111  0244                     l1278:	
+  3111  0244                     l1274:	
   3112  0244  3001               	movlw	1
   3113  0245                     u665:	
   3114  0245  35F5               	lslf	___lmul@multiplicand,f
@@ -3136,7 +3136,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3130  0254  0472               	iorwf	___lmul@multiplier+1,w
   3131  0255  0471               	iorwf	___lmul@multiplier,w
   3132  0256  1D03               	skipz
-  3133  0257  2A3A               	goto	l1274
+  3133  0257  2A3A               	goto	l1270
   3134  0258  087C               	movf	___lmul@product+3,w
   3135  0259  00F4               	movwf	?___lmul+3
   3136  025A  087B               	movf	___lmul@product+2,w
@@ -3192,10 +3192,10 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3186  0313  0347               	decf	updateSwitch1State@state,w
   3187  0314  0448               	iorwf	updateSwitch1State@state+1,w
   3188  0315  1903               	btfsc	3,2
-  3189  0316  2B19               	goto	l1298
+  3189  0316  2B19               	goto	l1294
   3190  0317  01C7               	clrf	updateSwitch1State@state
   3191  0318  01C8               	clrf	updateSwitch1State@state+1
-  3192  0319                     l1298:	
+  3192  0319                     l1294:	
   3193                           
   3194                           ;state_manager.c: 60: pedalState.switch1 = state;
   3195  0319  0848               	movf	updateSwitch1State@state+1,w
@@ -3328,17 +3328,17 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3321  013C  3004               	movlw	4
   3322  013D  0279               	subwf	HEF_ByteArrayWrite@block,w
   3323  013E  1803               	skipnc
-  3324  013F  2944               	goto	l1184
+  3324  013F  2944               	goto	l1180
   3325  0140  3021               	movlw	33
   3326  0141  0275               	subwf	HEF_ByteArrayWrite@count,w
   3327  0142  1C03               	skipc
-  3328  0143  2946               	goto	l1188
-  3329  0144                     l1184:	
+  3328  0143  2946               	goto	l1184
+  3329  0144                     l1180:	
   3330                           
   3331                           ;HEF.c: 18: return -1;
   3332  0144  30FF               	movlw	255
   3333  0145  0008               	return
-  3334  0146                     l1188:	
+  3334  0146                     l1184:	
   3335                           
   3336                           ;HEF.c: 20: blockAddr = 16384 - 128 + block * 32;
   3337  0146  0879               	movf	HEF_ByteArrayWrite@block,w
@@ -3376,7 +3376,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3369                           
   3370                           ;HEF.c: 28: PMCON1bits.LWLO = 1;
   3371  015D  1695               	bsf	21,5	;volatile
-  3372  015E                     l1222:	
+  3372  015E                     l1218:	
   3373                           ;HEF.c: 30: while ( count > 0) {
   3374                           
   3375  015E  0875               	movf	HEF_ByteArrayWrite@count,w
@@ -3436,7 +3436,7 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3429                           ;HEF.c: 44: count--;
   3430  017E  3001               	movlw	1
   3431  017F  02F5               	subwf	HEF_ByteArrayWrite@count,f
-  3432  0180  295E               	goto	l1222
+  3432  0180  295E               	goto	l1218
   3433  0181                     l141:	
   3434                           
   3435                           ;HEF.c: 45: }
@@ -3671,24 +3671,24 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3663  029A  0336               	decf	_pedalState,w
   3664  029B  0437               	iorwf	_pedalState+1,w
   3665  029C  1903               	btfsc	3,2
-  3666  029D  2AA0               	goto	l1262
+  3666  029D  2AA0               	goto	l1258
   3667                           
   3668                           ;state_manager.c: 31: pedalState.switch1 = 0;
   3669  029E  01B6               	clrf	_pedalState
   3670  029F  01B7               	clrf	_pedalState+1
-  3671  02A0                     l1262:	
+  3671  02A0                     l1258:	
   3672                           
   3673                           ;state_manager.c: 32: }
   3674                           ;state_manager.c: 34: if (pedalState.switch2 != 1) {
   3675  02A0  0338               	decf	_pedalState+2,w
   3676  02A1  0439               	iorwf	_pedalState+3,w
   3677  02A2  1903               	btfsc	3,2
-  3678  02A3  2AA6               	goto	l1266
+  3678  02A3  2AA6               	goto	l1262
   3679                           
   3680                           ;state_manager.c: 35: pedalState.switch2 = 0;
   3681  02A4  01B8               	clrf	_pedalState+2
   3682  02A5  01B9               	clrf	_pedalState+3
-  3683  02A6                     l1266:	
+  3683  02A6                     l1262:	
   3684                           
   3685                           ;state_manager.c: 36: }
   3686                           ;state_manager.c: 37: isInitialized = 1;
@@ -3770,17 +3770,17 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3762  020D  3021               	movlw	33
   3763  020E  0275               	subwf	HEF_ByteArrayRead@count,w
   3764  020F  1803               	skipnc
-  3765  0210  2A15               	goto	l1236
+  3765  0210  2A15               	goto	l1232
   3766  0211  3004               	movlw	4
   3767  0212  0274               	subwf	HEF_ByteArrayRead@block,w
   3768  0213  1C03               	skipc
-  3769  0214  2A2D               	goto	l1248
-  3770  0215                     l1236:	
+  3769  0214  2A2D               	goto	l1244
+  3770  0215                     l1232:	
   3771                           
   3772                           ;HEF.c: 60: return -1;
   3773  0215  30FF               	movlw	255
   3774  0216  0008               	return
-  3775  0217                     l1240:	
+  3775  0217                     l1236:	
   3776                           ;HEF.c: 63: while ( count > 0)
   3777                           
   3778                           
@@ -3810,10 +3810,10 @@ Microchip Technology Omniscient Code Generator v1.37 (Free mode) build 201603110
   3802                           ;HEF.c: 66: count--;
   3803  022B  3001               	movlw	1
   3804  022C  02F5               	subwf	HEF_ByteArrayRead@count,f
-  3805  022D                     l1248:	
+  3805  022D                     l1244:	
   3806  022D  0875               	movf	HEF_ByteArrayRead@count,w
   3807  022E  1D03               	btfss	3,2
-  3808  022F  2A17               	goto	l1240
+  3808  022F  2A17               	goto	l1236
   3809                           
   3810                           ;HEF.c: 67: }
   3811                           ;HEF.c: 70: return 0;
@@ -4249,7 +4249,7 @@ Call Graph Tables:
  ---------------------------------------------------------------------------------
  (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
  ---------------------------------------------------------------------------------
- (0) _main                                                 0     0      0   10154
+ (0) _main                                                 0     0      0    9770
                 _ConfigureOscillator
                             _InitApp
                         _initSwitch1
@@ -4257,22 +4257,22 @@ Call Graph Tables:
                       _updateSwitch1
                       _updateSwitch2
  ---------------------------------------------------------------------------------
- (1) _updateSwitch2                                        1     1      0    3000
+ (1) _updateSwitch2                                        1     1      0    2872
                                               7 BANK0      1     1      0
                     _setSwitch1State
                     _setSwitch2State
  ---------------------------------------------------------------------------------
- (1) _updateSwitch1                                        1     1      0    3000
+ (1) _updateSwitch1                                        1     1      0    2872
                                               7 BANK0      1     1      0
                     _setSwitch1State
                     _setSwitch2State
  ---------------------------------------------------------------------------------
- (1) _initSwitch2                                          2     2      0    2077
+ (1) _initSwitch2                                          2     2      0    2013
                                               7 BANK0      2     2      0
                     _getSwitch2State
                     _setSwitch2State
  ---------------------------------------------------------------------------------
- (2) _setSwitch2State                                      2     0      2    1500
+ (2) _setSwitch2State                                      2     0      2    1436
                                               5 BANK0      2     0      2
                  _updateSwitch2State
                             _wait_ms
@@ -4288,12 +4288,12 @@ Call Graph Tables:
  (3) _initStateManager                                     0     0      0     554
                     _getCurrentState
  ---------------------------------------------------------------------------------
- (1) _initSwitch1                                          2     2      0    2077
+ (1) _initSwitch1                                          2     2      0    2013
                                               7 BANK0      2     2      0
                     _getSwitch1State
                     _setSwitch1State
  ---------------------------------------------------------------------------------
- (2) _setSwitch1State                                      2     0      2    1500
+ (2) _setSwitch1State                                      2     0      2    1436
                                               5 BANK0      2     0      2
                  _updateSwitch1State
                             _wait_ms
@@ -4499,27 +4499,27 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.37 build -260352376 
-Symbol Table                                                                                   Wed Dec 21 20:55:58 2016
+Symbol Table                                                                                   Mon Dec 26 23:32:24 2016
 
                 _updateSwitch1 00AC                  _updateSwitch2 0021                    __CFG_CP$OFF 0000  
                            l71 027A                    __CFG_LVP$ON 0000                            l141 0181  
-                          l234 00E4                            l284 0059                            u555 014A  
-                          u740 01E6                            u805 00B8                            u735 01CB  
-                          u815 00C8                            u585 0203                            u665 0245  
-                          u905 003D                            u770 01AC                            u675 024C  
-                          u765 0191                            u855 00EE                            u865 0115  
-                          u945 0063                            u955 008A                            u895 002D  
-              _getCurrentState 0289                            _isr 0004                   __CFG_BORV$LO 0000  
-                          wreg 0009                           l1222 015E                           l1240 0217  
-                         l1320 0331                           l1306 030C                           l1236 0215  
-                         l1412 0120                           l1404 0108                           l1262 02A0  
-                         l1406 010C                           l1430 0034                           l1248 022D  
-                         l1184 0144                           l1336 01E8                           l1266 02A6  
-                         l1274 023A                           l1450 0072                           l1434 0044  
-                         l1188 0146                           l1278 0244                           l1358 01AE  
-                         l1382 00CF                           l1464 0095                           l1456 007D  
-                         l1298 0319                           l1378 00BF                           l1458 0081  
-                         l1548 035B                           l1398 00FD                           ?_isr 0070  
+                          u555 014A                            u740 01E6                            u805 00B8  
+                          u735 01CB                            u815 00C8                            u585 0203  
+                          u665 0245                            u905 003D                            u770 01AC  
+                          u675 024C                            u835 00E2                            u765 0191  
+                          u925 0057                            u865 0114                            u955 0089  
+                          u895 002D                _getCurrentState 0289                            _isr 0004  
+                 __CFG_BORV$LO 0000                            wreg 0009                           l1302 030C  
+                         l1232 0215                           l1400 010B                           l1218 015E  
+                         l1236 0217                           l1244 022D                           l1180 0144  
+                         l1332 01E8                           l1316 0331                           l1262 02A6  
+                         l1270 023A                           l1406 0120                           l1184 0146  
+                         l1424 0034                           l1258 02A0                           l1274 0244  
+                         l1354 01AE                           l1450 0080                           l1428 0044  
+                         l1540 035B                           l1294 0319                           l1374 00BF  
+                         l1446 0075                           l1438 0065                           l1456 0095  
+                         l1448 007D                           l1378 00CF                           l1396 0100  
+                         l1388 00F0                           l1398 0108                           ?_isr 0070  
                  __CFG_WRT$OFF 0000     __end_of_HEF_ByteArrayWrite 018A                           _main 0357  
                          fsr0h 0005                           fsr1h 0007                           fsr0l 0004  
                          indf0 0000                           indf1 0001                           fsr1l 0006  

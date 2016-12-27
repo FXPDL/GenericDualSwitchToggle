@@ -3956,30 +3956,32 @@ switch2_pressed++;
 
 # 48
 if (switch2_pressed == 0) {
-
-# 56
 switch2_down++;
-if (switch2_state == 1) {
-if (switch2_up == 1) {
-switch2_toggle = 1;
-}
 
+# 59
 if (switch2_down >= long_press_limit) {
 switch2_down = long_press_limit;
 setSwitch1State(0);
 switch2_toggle = 0;
 }
+
+if (switch2_state == 1) {
+if (switch2_up == 1) {
+switch2_toggle = 1;
+switch2_turning_on = 0;
+}
+
 } else {
 
 switch2_turning_on = 1;
-switch2_toggle = 0;
-setSwitch2State(1);
+switch2_toggle = 1;
+
 }
 
 switch2_up = 0;
 } else if (switch2_pressed >= 25) {
 if (switch2_toggle == 1) {
-setSwitch2State(0);
+setSwitch2State(switch2_turning_on);
 }
 LATCbits.LATC5 = switch2_state;
 switch2_turning_on = 0;

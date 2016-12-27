@@ -43,13 +43,13 @@
 [v _initSwitch1 initSwitch1 `(v  1 e 1 0 ]
 "29
 [v _updateSwitch1 updateSwitch1 `(v  1 e 1 0 ]
-"81
+"92
 [v _setSwitch1State setSwitch1State `(v  1 e 1 0 ]
 "24 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\GenericDualSwitchToggle.X\switch2.c
 [v _initSwitch2 initSwitch2 `(v  1 e 1 0 ]
 "29
 [v _updateSwitch2 updateSwitch2 `(v  1 e 1 0 ]
-"88
+"92
 [v _setSwitch2State setSwitch2State `(v  1 e 1 0 ]
 "17 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\GenericDualSwitchToggle.X\system.c
 [v _ConfigureOscillator ConfigureOscillator `(v  1 e 1 0 ]
@@ -275,12 +275,12 @@
 "29 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\GenericDualSwitchToggle.X\switch2.c
 [v _updateSwitch2 updateSwitch2 `(v  1 e 1 0 ]
 {
-"86
+"90
 } 0
 "29 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\GenericDualSwitchToggle.X\switch1.c
 [v _updateSwitch1 updateSwitch1 `(v  1 e 1 0 ]
 {
-"79
+"90
 } 0
 "24 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\GenericDualSwitchToggle.X\switch2.c
 [v _initSwitch2 initSwitch2 `(v  1 e 1 0 ]
@@ -289,11 +289,11 @@
 [v initSwitch2@initState initState `i  1 a 2 7 ]
 "27
 } 0
-"88
+"92
 [v _setSwitch2State setSwitch2State `(v  1 e 1 0 ]
 {
 [v setSwitch2State@f_state f_state `i  1 p 2 5 ]
-"102
+"106
 } 0
 "65 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\GenericDualSwitchToggle.X\state_manager.c
 [v _updateSwitch2State updateSwitch2State `(v  1 e 1 0 ]
@@ -318,11 +318,11 @@
 [v initSwitch1@initState initState `i  1 a 2 7 ]
 "27
 } 0
-"81
+"92
 [v _setSwitch1State setSwitch1State `(v  1 e 1 0 ]
 {
 [v setSwitch1State@f_state f_state `i  1 p 2 5 ]
-"95
+"106
 } 0
 "23 C:\Users\Nancy\Dropbox (Stepframe)\Foxpedal Programming\Code\GenericDualSwitchToggle.X\system.c
 [v _wait_ms wait_ms `(v  1 e 1 0 ]
