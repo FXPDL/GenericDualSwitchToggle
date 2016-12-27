@@ -60,21 +60,27 @@ void updateSwitch2(void) {
             switch2_down = long_press_limit; //try and prevent overflow
             setSwitch1State(0);
             switch2_toggle = 0;
-        }
-        
-        if (switch2_state == 1) {  //Switch was on.
-            if (switch2_up == 1) {
-                switch2_toggle = 1;
-                switch2_turning_on = 0;
-            }
             
+            if (switch2_state == 0) {
+                //Switch2 was off, so turn it on
+                switch2_turning_on = 1;
+                setSwitch2State(1);
+            }
         } else {
-            //switch2 was off, so turn it on
-            switch2_turning_on = 1;
-            switch2_toggle = 1;
-          //  setSwitch2State(1);
-        }
+        
+            if (switch2_state == 1) {  //Switch was on.
+                if (switch2_up == 1) {
+                    switch2_toggle = 1;
+                    switch2_turning_on = 0;
+                }
 
+            } else {
+                //switch2 was off, so turn it on
+                switch2_turning_on = 1;
+                switch2_toggle = 1;
+              //  setSwitch2State(1);
+            }
+        }
         switch2_up = 0;
     } else if (switch2_pressed >= debounce_limit) {
         if (switch2_toggle == 1) {

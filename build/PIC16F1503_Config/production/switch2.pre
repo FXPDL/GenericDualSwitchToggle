@@ -3963,7 +3963,13 @@ if (switch2_down >= long_press_limit) {
 switch2_down = long_press_limit;
 setSwitch1State(0);
 switch2_toggle = 0;
+
+if (switch2_state == 0) {
+
+switch2_turning_on = 1;
+setSwitch2State(1);
 }
+} else {
 
 if (switch2_state == 1) {
 if (switch2_up == 1) {
@@ -3977,7 +3983,7 @@ switch2_turning_on = 1;
 switch2_toggle = 1;
 
 }
-
+}
 switch2_up = 0;
 } else if (switch2_pressed >= 25) {
 if (switch2_toggle == 1) {

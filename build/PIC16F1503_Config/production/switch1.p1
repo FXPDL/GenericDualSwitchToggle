@@ -3011,134 +3011,154 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;switch1.c: 62: switch1_toggle = 0;
 "62
 [e = _switch1_toggle -> 0 `i ]
-"63
-}
-[e :U 350 ]
-[; ;switch1.c: 63: }
-[; ;switch1.c: 65: if (switch1_state == 1) {
-"65
-[e $ ! == _switch1_state -> 1 `i 351  ]
+[; ;switch1.c: 64: if (switch1_state == 0) {
+"64
+[e $ ! == _switch1_state -> 0 `i 351  ]
 {
-[; ;switch1.c: 66: if (switch1_up == 1) {
+[; ;switch1.c: 66: switch1_turning_on = 1;
 "66
-[e $ ! == _switch1_up -> 1 `i 352  ]
-{
-[; ;switch1.c: 67: switch1_toggle = 1;
+[e = _switch1_turning_on -> 1 `i ]
+[; ;switch1.c: 67: setSwitch1State(1);
 "67
-[e = _switch1_toggle -> 1 `i ]
-[; ;switch1.c: 68: switch1_turning_on = 0;
+[e ( _setSwitch1State (1 -> 1 `i ]
 "68
-[e = _switch1_turning_on -> 0 `i ]
+}
+[e :U 351 ]
 "69
 }
-[e :U 352 ]
-"71
-}
-[; ;switch1.c: 69: }
-[; ;switch1.c: 71: } else {
-[e $U 353  ]
-[e :U 351 ]
+[; ;switch1.c: 68: }
+[; ;switch1.c: 69: } else {
+[e $U 352  ]
+[e :U 350 ]
 {
-[; ;switch1.c: 73: switch1_turning_on = 1;
-"73
-[e = _switch1_turning_on -> 1 `i ]
-[; ;switch1.c: 74: switch1_toggle = 1;
-"74
+[; ;switch1.c: 70: if (switch1_state == 1) {
+"70
+[e $ ! == _switch1_state -> 1 `i 353  ]
+{
+[; ;switch1.c: 71: if (switch1_up == 1) {
+"71
+[e $ ! == _switch1_up -> 1 `i 354  ]
+{
+[; ;switch1.c: 72: switch1_toggle = 1;
+"72
 [e = _switch1_toggle -> 1 `i ]
+[; ;switch1.c: 73: switch1_turning_on = 0;
+"73
+[e = _switch1_turning_on -> 0 `i ]
+"74
+}
+[e :U 354 ]
 "76
 }
+[; ;switch1.c: 74: }
+[; ;switch1.c: 76: } else {
+[e $U 355  ]
 [e :U 353 ]
-[; ;switch1.c: 76: }
-[; ;switch1.c: 78: switch1_up = 0;
+{
+[; ;switch1.c: 78: switch1_turning_on = 1;
 "78
-[e = _switch1_up -> 0 `i ]
+[e = _switch1_turning_on -> 1 `i ]
+[; ;switch1.c: 79: switch1_toggle = 1;
 "79
-}
-[; ;switch1.c: 79: } else if (switch1_pressed >= 25) {
-[e $U 354  ]
-[e :U 349 ]
-[e $ ! >= _switch1_pressed -> 25 `i 355  ]
-{
-[; ;switch1.c: 80: if (switch1_toggle == 1) {
-"80
-[e $ ! == _switch1_toggle -> 1 `i 356  ]
-{
-[; ;switch1.c: 81: setSwitch1State(switch1_turning_on);
+[e = _switch1_toggle -> 1 `i ]
 "81
-[e ( _setSwitch1State (1 _switch1_turning_on ]
-"82
-}
-[e :U 356 ]
-[; ;switch1.c: 82: }
-[; ;switch1.c: 83: LATAbits.LATA2 = switch1_state;
-"83
-[e = . . _LATAbits 0 2 -> _switch1_state `uc ]
-[; ;switch1.c: 84: switch1_turning_on = 0;
-"84
-[e = _switch1_turning_on -> 0 `i ]
-[; ;switch1.c: 85: switch1_toggle = 0;
-"85
-[e = _switch1_toggle -> 0 `i ]
-[; ;switch1.c: 86: switch1_up = 1;
-"86
-[e = _switch1_up -> 1 `i ]
-[; ;switch1.c: 87: switch1_down = 0;
-"87
-[e = _switch1_down -> 0 `i ]
-[; ;switch1.c: 88: switch1_pressed = 25;
-"88
-[e = _switch1_pressed -> 25 `i ]
-"89
 }
 [e :U 355 ]
+"82
+}
+[e :U 352 ]
+[; ;switch1.c: 81: }
+[; ;switch1.c: 82: }
+[; ;switch1.c: 83: switch1_up = 0;
+"83
+[e = _switch1_up -> 0 `i ]
+"84
+}
+[; ;switch1.c: 84: } else if (switch1_pressed >= 25) {
+[e $U 356  ]
+[e :U 349 ]
+[e $ ! >= _switch1_pressed -> 25 `i 357  ]
+{
+[; ;switch1.c: 85: if (switch1_toggle == 1) {
+"85
+[e $ ! == _switch1_toggle -> 1 `i 358  ]
+{
+[; ;switch1.c: 86: setSwitch1State(switch1_turning_on);
+"86
+[e ( _setSwitch1State (1 _switch1_turning_on ]
+"87
+}
+[e :U 358 ]
+[; ;switch1.c: 87: }
+[; ;switch1.c: 88: LATAbits.LATA2 = switch1_state;
+"88
+[e = . . _LATAbits 0 2 -> _switch1_state `uc ]
+[; ;switch1.c: 89: switch1_turning_on = 0;
+"89
+[e = _switch1_turning_on -> 0 `i ]
+[; ;switch1.c: 90: switch1_toggle = 0;
 "90
-[e :U 354 ]
-[; ;switch1.c: 89: }
-[; ;switch1.c: 90: }
+[e = _switch1_toggle -> 0 `i ]
+[; ;switch1.c: 91: switch1_up = 1;
+"91
+[e = _switch1_up -> 1 `i ]
+[; ;switch1.c: 92: switch1_down = 0;
+"92
+[e = _switch1_down -> 0 `i ]
+[; ;switch1.c: 93: switch1_pressed = 25;
+"93
+[e = _switch1_pressed -> 25 `i ]
+"94
+}
+[e :U 357 ]
+"95
+[e :U 356 ]
+[; ;switch1.c: 94: }
+[; ;switch1.c: 95: }
 [e :UE 344 ]
 }
-"92
+"97
 [v _setSwitch1State `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;switch1.c: 92: void setSwitch1State(int f_state) {
+[; ;switch1.c: 97: void setSwitch1State(int f_state) {
 [e :U _setSwitch1State ]
 [v _f_state `i ~T0 @X0 1 r1 ]
 [f ]
-[; ;switch1.c: 93: if (switch1_state == f_state) {return;}
-"93
-[e $ ! == _switch1_state _f_state 358  ]
+[; ;switch1.c: 98: if (switch1_state == f_state) {return;}
+"98
+[e $ ! == _switch1_state _f_state 360  ]
 {
-[e $UE 357  ]
+[e $UE 359  ]
 }
-[e :U 358 ]
-[; ;switch1.c: 94: switch1_state = f_state;
-"94
-[e = _switch1_state _f_state ]
-[; ;switch1.c: 95: LATAbits.LATA2 = f_state;
-"95
-[e = . . _LATAbits 0 2 -> _f_state `uc ]
-[; ;switch1.c: 96: LATCbits.LATC2 = f_state;
-"96
-[e = . . _LATCbits 0 2 -> _f_state `uc ]
-[; ;switch1.c: 97: LATCbits.LATC1 = !f_state;
-"97
-[e = . . _LATCbits 0 1 -> -> ! != _f_state -> 0 `i `i `uc ]
-[; ;switch1.c: 99: wait_ms(20);
+[e :U 360 ]
+[; ;switch1.c: 99: switch1_state = f_state;
 "99
-[e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;switch1.c: 101: LATCbits.LATC2 = 0;
+[e = _switch1_state _f_state ]
+[; ;switch1.c: 100: LATAbits.LATA2 = f_state;
+"100
+[e = . . _LATAbits 0 2 -> _f_state `uc ]
+[; ;switch1.c: 101: LATCbits.LATC2 = f_state;
 "101
-[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
-[; ;switch1.c: 102: LATCbits.LATC1 = 0;
+[e = . . _LATCbits 0 2 -> _f_state `uc ]
+[; ;switch1.c: 102: LATCbits.LATC1 = !f_state;
 "102
-[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
-[; ;switch1.c: 104: updateSwitch1State(switch1_state);
+[e = . . _LATCbits 0 1 -> -> ! != _f_state -> 0 `i `i `uc ]
+[; ;switch1.c: 104: wait_ms(20);
 "104
-[e ( _updateSwitch1State (1 _switch1_state ]
-[; ;switch1.c: 105: wait_ms(20);
-"105
 [e ( _wait_ms (1 -> -> 20 `i `ui ]
-[; ;switch1.c: 106: }
+[; ;switch1.c: 106: LATCbits.LATC2 = 0;
 "106
-[e :UE 357 ]
+[e = . . _LATCbits 0 2 -> -> 0 `i `uc ]
+[; ;switch1.c: 107: LATCbits.LATC1 = 0;
+"107
+[e = . . _LATCbits 0 1 -> -> 0 `i `uc ]
+[; ;switch1.c: 109: updateSwitch1State(switch1_state);
+"109
+[e ( _updateSwitch1State (1 _switch1_state ]
+[; ;switch1.c: 110: wait_ms(20);
+"110
+[e ( _wait_ms (1 -> -> 20 `i `ui ]
+[; ;switch1.c: 111: }
+"111
+[e :UE 359 ]
 }
